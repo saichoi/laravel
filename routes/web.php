@@ -41,8 +41,8 @@ Route::post('/articles', function(Request $request) {
         'body' => $input['body'],
         'user_id' => Auth::id()
     ]);
-
-    return 'hello11';
+    
+    return redirect()->route('articles.index');
 })->name('articles.index');
 
 Route::get('/articles', function(Request $request) {
@@ -62,6 +62,24 @@ Route::get('/articles', function(Request $request) {
 // });
 
 Route::get('/articles/{article}', function(Article $article) {
-
     return view('articles.show', ['article' => $article]);
 })->name('articles.show');
+
+Route::get('articles/{article}/edit', function(Article $article) {
+    return view('articles.edit', ['articles' => $article]);
+})->name('articles.edit');
+
+Route::put('articles/{article}/update', function(Request $request, Article $article) {
+    $input = $request->validate([
+        'body' => [
+            'required',
+            'string', 
+            'max:255',
+        ],
+    ]);
+
+    $article->body = $input['body'];
+    $article->save();
+
+    return redirect()->route('articles.index');
+})->name('articles.update');

@@ -15,7 +15,8 @@
             <div class="background-white border rounded mb-3 p-3">
                 <p>{{ $article->body }}</p>
                 <p>{{ $article->user->name }}</p>
-                <p><a href="{{ route('articles.show', ['article' => $article] )}}">{{ $article->created_at->diffForHumans() }}</a></p>
+                <p><a href="{{ route('articles.show', ['article' => $article]) }}">{{ $article->created_at->diffForHumans() }}</a></p>
+                <p class="mt-2"><a href="{{ route('articles.edit', ['article' => $article]) }}" class="button rounded bg-blue-500 px-2 py-1 text-xs text-white">수정</a></p>
             </div>
             @endauth
         @endforeach
