@@ -25,7 +25,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/articles/create', function() {
     return view('articles/create');
-});
+})->name('articles.create');
 
 
 Route::post('/articles', function(Request $request) {
@@ -42,8 +42,8 @@ Route::post('/articles', function(Request $request) {
         'user_id' => Auth::id()
     ]);
 
-    return 'hello';
-});
+    return 'hello11';
+})->name('articles.index');
 
 Route::get('/articles', function(Request $request) {
     $articles = Article::with('user')
@@ -53,7 +53,7 @@ Route::get('/articles', function(Request $request) {
     return view(
         'articles.index', ['articles' => $articles,]
     );
-});
+})->name('articles.store');
 
 // Route::get('/articles/{id}', function($id) {
 //     $article = Article::find($id);
@@ -64,4 +64,4 @@ Route::get('/articles', function(Request $request) {
 Route::get('/articles/{article}', function(Article $article) {
 
     return view('articles.show', ['article' => $article]);
-});
+})->name('articles.show');

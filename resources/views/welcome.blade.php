@@ -27,7 +27,7 @@
                     <main class="mt-6">
                         <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
                             <a
-                                href="/articles/create"
+                                href="{{ route('articles.create' )}}"
                                 class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)]"
                             >
 
@@ -36,6 +36,22 @@
 
                                     <p class="mt-4 text-sm/relaxed text-black">
                                         게시글 작성
+                                    </p>
+                                </div>
+
+                                <svg class="size-6 shrink-0 self-center stroke-[#FF2D20]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"/></svg>
+                            </a>
+
+                            <a
+                                href="{{ route('articles.index' )}}"
+                                class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)]"
+                            >
+
+                                <div class="pt-3 sm:pt-5">
+                                    <h2 class="text-xl font-semibold text-black">글목록</h2>
+
+                                    <p class="mt-4 text-sm/relaxed text-black">
+                                        게시글 보기
                                     </p>
                                 </div>
 
