@@ -16,7 +16,14 @@
                 <p>{{ $article->body }}</p>
                 <p>{{ $article->user->name }}</p>
                 <p><a href="{{ route('articles.show', ['article' => $article]) }}">{{ $article->created_at->diffForHumans() }}</a></p>
-                <p class="mt-2"><a href="{{ route('articles.edit', ['article' => $article]) }}" class="button rounded bg-blue-500 px-2 py-1 text-xs text-white">수정</a></p>
+                <div class="flex flex-row space-x-1">
+                    <p class="mt-2"><a href="{{ route('articles.edit', ['article' => $article]) }}" class="button rounded bg-blue-500 px-2 py-1 text-xs text-white">수정</a></p>
+                    <form action="{{ route('articles.delete', ['article' => $article->id])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <p class="mt-2"><button class="button rounded bg-red-500 px-2 py-1 text-xs text-white">삭제</button></p>
+                    </form>
+                </div>
             </div>
             @endauth
         @endforeach
