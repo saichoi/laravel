@@ -14,15 +14,14 @@
             @auth
             <div class="background-white border rounded mb-3 p-3">
                 <p>{{ $article->body }}</p>
-                <p>{{ $article->created_at }}</p>
+                <p>{{ $article->user->name }}</p>
+                <p>{{ $article->created_at->diffForHumans() }}</p>
             </div>
             @endauth
         @endforeach
     </div>
     <div class="container p-5">
-        <!-- vendor/bin/sail artisan vendor:publish --tag=laravel-pagination -->
         {{ $articles->links() }}    
     </div>
-    
 </body>
 </html>

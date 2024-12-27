@@ -46,30 +46,11 @@ Route::post('/articles', function(Request $request) {
 });
 
 Route::get('/articles', function(Request $request) {
-    // $page = $request->input('page', 1);
-    $perPage = $request->input('per_page', 5);
-    // $skip = ($page - 1) * $perPage;
+    $articles = Article::select('body', 'user_id', 'created_at')
+        ->latest()
+        ->paginate(5);
 
-    $articles = Article::select('body', 'created_at')
-    // ->skip($skip)
-    // ->take($perPage)
-    ->latest()
-    // ->get();
-    ->paginate($perPage);
-
-    // $articles->withQueryString(); // 쿼리스트링을 모두 표시하기 위함
-    // $articles->append(['filter' => 'name']); // 기존에 없는 쿼리스트링 추가
-
-    // $totalCount = Article::count();
-    
     return view(
-        'articles.index', 
-        [
-            'articles' => $articles,
-            // 'totalCount' => $totalCount,
-            // 'page' => $page,
-            // 'perPage' => $perPage
-        ]
+        'articles.index', ['articles' => $articles,]
     );
-    // return view('articles.index')->with('articles', $articles);
 });

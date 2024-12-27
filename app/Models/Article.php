@@ -11,4 +11,9 @@ class Article extends Model
 
     protected $fillable = ['body', 'user_id']; // 대량할당 대상 선언
     // protected $guarded = ['id']; // id 빼고 모두
+
+    public function user() 
+    {
+        return $this->belongsTo(User::class);
+    }
 }
