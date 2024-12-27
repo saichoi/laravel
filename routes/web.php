@@ -47,11 +47,21 @@ Route::post('/articles', function(Request $request) {
 
 Route::get('/articles', function(Request $request) {
     $articles = Article::with('user')
-        ->select('body', 'user_id', 'created_at')
         ->latest()
         ->paginate(5);
 
     return view(
         'articles.index', ['articles' => $articles,]
     );
+});
+
+// Route::get('/articles/{id}', function($id) {
+//     $article = Article::find($id);
+
+//     return view('articles.show', ['article' => $article]);
+// });
+
+Route::get('/articles/{article}', function(Article $article) {
+
+    return view('articles.show', ['article' => $article]);
 });

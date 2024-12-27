@@ -15,7 +15,7 @@
             <div class="background-white border rounded mb-3 p-3">
                 <p>{{ $article->body }}</p>
                 <p>{{ $article->user->name }}</p>
-                <p>{{ $article->created_at->diffForHumans() }}</p>
+                <p><a href="/articles/{{$article->id}}">{{ $article->created_at->diffForHumans() }}</a></p>
             </div>
             @endauth
         @endforeach
