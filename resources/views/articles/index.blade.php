@@ -11,7 +11,7 @@
     <div class="container p-5">
         <h1 class="text-2xl mb-5">글목록</h1>
         @foreach ($articles as $article)
-            @auth
+
             <div class="background-white border rounded mb-3 p-3">
                 <p>{{ $article->body }}</p>
                 <p>{{ $article->user->name }}</p>
@@ -25,7 +25,7 @@
                     </form>
                 </div>
             </div>
-            @endauth
+
         @endforeach
     </div>
     <div class="container p-5">

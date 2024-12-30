@@ -12,7 +12,7 @@ class ArticleController extends Controller
         return view('articles/create');
     }
 
-    public function index(Request $request) {
+    public function store(Request $request) {
         $input = $request->validate([
             'body' => [
                 'required',
@@ -29,13 +29,13 @@ class ArticleController extends Controller
         return redirect()->route('articles.index');
     }
 
-    public function store() {
+    public function index() {
         $articles = Article::with('user')
             ->latest()
             ->paginate(5);
 
         return view(
-            'articles.index', ['articles' => $articles,]
+            'articles.index', ['articles' => $articles]
         );
     }
 
