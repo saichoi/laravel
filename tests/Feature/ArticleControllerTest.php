@@ -68,8 +68,8 @@ test('글을_수정할_수_있다', function() {
 
 test('글을_삭제할_수_있다', function() {
     $article = Article::factory()->create();
-
-    $this->delete(route('articles.delete', ['article' => $article->id]))
+    
+    $this->delete(route('articles.destroy', ['article' => $article->id]))
         ->assertRedirect(route('articles.index'));
 
     $this->assertDatabaseMissing('articles', ['id' => $article->id]);
