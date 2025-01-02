@@ -55,4 +55,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Article::class);
     }
+
+    public function followers()
+    {
+        // 나를 팔로우하는 유저
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id');
+    }
+
+    public function followings() 
+    {
+        // 내가 팔로우하는 유저
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id');
+    }
+
+    public function isFollowing(User $user) 
+    {
+        return $this->followings()->where('user_id', $user->id)->exists();
+    }
 }
