@@ -36,3 +36,5 @@ Route::resource('articles', ArticleController::class)->middleware('auth')->excep
 Route::resource('articles', ArticleController::class)->only(['index', 'show']); // inxex, show 는 auth를 사용하지 않는다.
 
 Route::resource('comments', CommentController::class);
+
+Route::get('profile/{user}', [ProfileController::class, 'show'])->name('profile');
