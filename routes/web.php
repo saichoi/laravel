@@ -30,4 +30,6 @@ require __DIR__.'/auth.php';
 //     Route::delete('articles/{article}',  'destory')->name('articles.delete');
 // });
 
-Route::resource('articles', ArticleController::class);
+Route::resource('articles', ArticleController::class)->middleware('auth')->except(['index', 'show']); // inxex, show 를 제외하고는 모두 auth를 통과해야해.
+    
+Route::resource('articles', ArticleController::class)->only(['index', 'show']); // inxex, show 는 auth를 사용하지 않는다.
