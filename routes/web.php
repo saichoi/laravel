@@ -37,4 +37,6 @@ Route::resource('articles', ArticleController::class)->only(['index', 'show']); 
 
 Route::resource('comments', CommentController::class);
 
-Route::get('profile/{user}', [ProfileController::class, 'show'])->name('profile');
+Route::get('profile/{user:username}', [ProfileController::class, 'show'])
+    ->name('profile')
+    ->where('user', '[A-Za-z0-9-]+');
