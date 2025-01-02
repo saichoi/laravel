@@ -26,7 +26,9 @@ test('로그인_한_사용자는_글을_작성할_수_있다', function() {
     $user = User::factory()->create();
 
     // 어떤 API 실행되었는지 어떤 페이지로 리다이렉트 되었는지 확인
-    $this->actingAs($user)->post(route('articles.store'), $testData)->assertRedirect(route('articles.index'));
+    $this->actingAs($user)
+        ->post(route('articles.store'), $testData)
+        ->assertRedirect(route('articles.index'));
 
     // 디비에 저장되었는지 확인
     $this->assertDatabaseHas('articles', $testData);
