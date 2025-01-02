@@ -25,6 +25,11 @@ class ProfileUpdateRequest extends FormRequest
                 'max:255',
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
+            'username' => [
+                'max:255',
+                'regex:/^[A-Za-z0-9-]+$/',
+                'unique:users,username'
+            ]
         ];
     }
 }
